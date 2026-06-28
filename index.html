@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cartilla Mundial 2026 · 16avos de Final · SPE DR-Atacama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mint:#E6F2EE; --mint-2:#F2F8F6; --card:#FFFFFF; --line:#D5E6E0;
+    --navy:#16306B; --teal:#2C9C8E; --teal-dk:#1f7d72;
+    --red:#D32B2B; --ink:#1c2b3a; --muted:#6b8079;
+    --shadow:0 6px 22px rgba(22,48,107,.08);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{font-family:'Archivo',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);
+    background:radial-gradient(120% 80% at 50% 0%,var(--mint-2),var(--mint));min-height:100vh;padding:0 0 48px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 14px}
+
+  header{background:linear-gradient(180deg,#dff0ea,#eaf6f1);border-bottom:1px solid var(--line);padding:18px 14px 16px}
+  .hd-top{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:12.5px;color:var(--navy);text-align:center;line-height:1.3}
+  .title-row{max-width:680px;margin:12px auto 0;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+  h1{font-size:clamp(20px,6.2vw,30px);font-weight:900;color:var(--navy);margin:0;text-align:center;line-height:1.04;letter-spacing:-.5px}
+  h1 small{display:block;font-size:.62em;font-weight:800;letter-spacing:.5px;color:var(--teal-dk)}
+  .pill{background:var(--navy);color:#fff;font-weight:800;font-size:13px;padding:7px 15px;border-radius:999px;letter-spacing:.5px;white-space:nowrap;box-shadow:0 4px 10px rgba(22,48,107,.3)}
+  .org{margin-top:8px;text-align:center;font-size:11px;color:var(--muted);font-weight:600}
+
+  .namecard{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px;margin:16px 0}
+  .namecard label{display:block;font-weight:800;color:var(--navy);font-size:13px;margin-bottom:7px;letter-spacing:.3px}
+  .namecard input{width:100%;border:2px solid var(--line);border-radius:11px;padding:13px 14px;font-size:16px;font-weight:600;font-family:inherit;color:var(--ink);outline:none;transition:border-color .15s}
+  .namecard input:focus{border-color:var(--teal)}
+  .counter{margin-top:11px;display:flex;align-items:center;gap:10px}
+  .bar{flex:1;height:9px;background:#e7efec;border-radius:999px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),#52c2b4);border-radius:999px;transition:width .25s}
+  .counter b{font-size:12.5px;color:var(--navy);font-weight:800;white-space:nowrap}
+
+  .match{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 11px 10px;margin-bottom:10px;position:relative}
+  .llave{position:absolute;top:-9px;left:12px;background:var(--navy);color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;padding:2px 9px;border-radius:999px}
+  .mrow{display:grid;grid-template-columns:1fr auto auto auto 1fr;align-items:center;gap:6px}
+  .team{display:flex;align-items:center;gap:7px;min-width:0}
+  .team.right{justify-content:flex-end}
+  .flag{font-size:24px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.15))}
+  .tname{font-weight:700;font-size:12.5px;color:var(--ink);line-height:1.05;overflow:hidden;text-overflow:ellipsis}
+  .team.right .tname{text-align:right}
+  .gl,.gv{width:42px;height:46px;text-align:center;font-size:20px;font-weight:800;color:var(--navy);font-family:inherit;border:2px solid var(--navy);border-radius:10px;background:#fff;outline:none;padding:0;transition:.12s}
+  .gl:focus,.gv:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(44,156,142,.18)}
+  .gl.filled,.gv.filled{background:#f0faf8}
+  .dash{font-weight:900;color:var(--navy);font-size:15px;text-align:center;width:14px}
+  .venue{margin-top:9px;padding-top:8px;border-top:1px solid #eef4f1;display:flex;justify-content:center;gap:16px;font-size:11px;color:var(--muted);font-weight:700}
+
+  .legend{background:#eef6f3;border:1px dashed var(--teal);border-radius:14px;padding:13px 15px;margin:16px 0;font-size:12.5px;color:#234;line-height:1.5}
+  .legend b{color:var(--teal-dk)}
+  .legend .ttl{font-weight:900;color:var(--navy);font-size:13px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+
+  .actions{position:sticky;bottom:0;z-index:20;margin:8px -14px -8px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(234,246,241,0),#eaf6f1 38%)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border:none;border-radius:13px;font-family:inherit;font-weight:800;font-size:16px;padding:16px;cursor:pointer;transition:.15s}
+  .btn-wa{background:#25D366;color:#fff;box-shadow:0 6px 16px rgba(37,211,102,.35)}
+  .btn-wa:active{transform:translateY(1px)}
+  .btn-wa:disabled{background:#b8c7c2;box-shadow:none;cursor:not-allowed}
+  .btn-ghost{background:transparent;color:var(--navy);font-size:13.5px;padding:11px;font-weight:700;margin-top:4px}
+  .hint{text-align:center;font-size:11.5px;color:var(--muted);margin-top:6px;font-weight:600}
+
+  .done{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:20px;margin:16px 0;text-align:center}
+  .done.show{display:block;animation:pop .3s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+  .done .chk{width:54px;height:54px;border-radius:50%;background:#25D366;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:900}
+  .done h3{color:var(--navy);margin:0 0 6px;font-size:18px}
+  .codebox{background:#f3f8f6;border:1px solid var(--line);border-radius:11px;padding:11px;font-size:11px;word-break:break-all;color:#456;margin:12px 0;text-align:left;font-weight:600}
+
+  .coord-link{text-align:center;margin:20px 0 4px}
+  .coord-link a{color:var(--muted);font-size:12px;font-weight:700;text-decoration:underline;cursor:pointer}
+  #coord{display:none;background:var(--card);border:2px solid var(--navy);border-radius:16px;box-shadow:var(--shadow);padding:18px;margin:16px 0}
+  #coord.show{display:block}
+  #coord h2{color:var(--navy);margin:0 0 4px;font-size:18px}
+  #coord p{font-size:12.5px;color:var(--muted);margin:0 0 12px;line-height:1.5}
+  #coord textarea{width:100%;min-height:140px;border:2px solid var(--line);border-radius:11px;padding:12px;font-size:12px;font-family:ui-monospace,Menlo,Consolas,monospace;resize:vertical;outline:none}
+  #coord textarea:focus{border-color:var(--teal)}
+  .crow{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .cbtn{flex:1;min-width:130px;border:none;border-radius:11px;font-family:inherit;font-weight:800;font-size:13.5px;padding:13px;cursor:pointer;color:#fff;background:var(--teal)}
+  .cbtn.alt{background:var(--navy)}
+  .cbtn.gray{background:#e7efec;color:var(--navy)}
+  #cstatus{margin-top:12px;font-size:13px;font-weight:700}
+  #ctable{margin-top:12px;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  #ctable table{border-collapse:collapse;width:100%;font-size:11px}
+  #ctable th,#ctable td{border:1px solid #e6efeb;padding:5px 7px;text-align:center;white-space:nowrap}
+  #ctable th{background:#16306B;color:#fff;position:sticky;top:0}
+  #ctable td:first-child,#ctable th:first-child{text-align:left;background:#f3f8f6}
+
+  footer{text-align:center;font-size:11px;color:var(--muted);margin-top:24px;line-height:1.6}
+  .toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;transition:.25s;z-index:60;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-top"><span>✏️</span> Escribe tu pronóstico del marcador de cada partido</div>
+  <div class="title-row">
+    <h1>SPE DR-Atacama<small>EN MODO MUNDIAL 2026</small></h1>
+    <span class="pill">CARTILLA · 16AVOS DE FINAL</span>
+  </div>
+  <div class="org">Servicio de Protección Especializada a la Niñez y Adolescencia · FIFA World Cup 2026</div>
+</header>
+
+<div class="wrap">
+  <div id="participant">
+    <div class="namecard">
+      <label for="pname">👤 Nombre del participante</label>
+      <input id="pname" type="text" placeholder="Escribe tu nombre y apellido" autocomplete="name">
+      <div class="counter">
+        <div class="bar"><i id="barfill"></i></div>
+        <b id="cnt">0/16 partidos</b>
+      </div>
+    </div>
+
+    <div id="grid"></div>
+
+    <div class="legend">
+      <div class="ttl">🏆 Reglas del concurso</div>
+      Resultado exacto <b>5 pts</b> · Ganador o empate acertado <b>3 pts</b> · Resultado incorrecto <b>1 pt por participación</b>. <b>¡Que gane el mejor!</b>
+    </div>
+
+    <div class="done" id="done">
+      <div class="chk">✓</div>
+      <h3>¡Cartilla lista!</h3>
+      <p style="font-size:13px;color:var(--muted);margin:0 0 4px">Envíala por WhatsApp al coordinador. Si no se abrió solo, copia el código y pégalo en el grupo.</p>
+      <div class="codebox" id="codeout"></div>
+      <button class="btn btn-wa" id="reopenwa">📲 Abrir WhatsApp de nuevo</button>
+      <button class="btn btn-ghost" id="copycode">📋 Copiar código</button>
+    </div>
+
+    <div class="actions" id="actions">
+      <button class="btn btn-wa" id="send" disabled>📲 Enviar por WhatsApp</button>
+      <div class="hint" id="hint">Completa tu nombre y los 16 marcadores para enviar.</div>
+    </div>
+  </div>
+
+  <div class="coord-link"><a id="toCoord">⚙️ Soy el coordinador · procesar cartillas recibidas</a></div>
+
+  <div id="coord">
+    <h2>⚙️ Panel del coordinador</h2>
+    <p>Pega aquí todos los mensajes/códigos recibidos por WhatsApp (uno debajo del otro). El panel detecta las líneas con <code>16A|</code>.</p>
+    <textarea id="cin" placeholder="Pega aquí las cartillas recibidas…
+Ejemplo de una línea válida:
+16A|Marcelo Gomez|1,0,2,1,0,3,2,1,1,1,2,0,3,2,1,0,2,2,1,3,0,1,2,1,1,1,3,0,2,2,0,1"></textarea>
+    <div class="crow">
+      <button class="cbtn" id="cproc">Procesar cartillas</button>
+      <button class="cbtn alt" id="ccopy">📋 Copiar tabla para Excel</button>
+      <button class="cbtn gray" id="ccsv">⬇️ Descargar CSV</button>
+    </div>
+    <div id="cstatus"></div>
+    <div id="ctable"></div>
+  </div>
+
+  <footer>
+    Polla Mundialera SPE DR-Atacama 2026 · 16avos de Final<br>
+    Dudas: mgomezg@servicioproteccion.gob.cl
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CRUCES OFICIALES DE 16AVOS — según el bracket oficial
+   [bandera1, "Local", bandera2, "Visita"]
+   (orden del cuadro: lado izquierdo y luego lado derecho)
+   ============================================================ */
+const LLAVES = [
+  ["🇩🇪","Alemania","🇵🇾","Paraguay"],
+  ["🇫🇷","Francia","🇸🇪","Suecia"],
+  ["🇿🇦","Sudáfrica","🇨🇦","Canadá"],
+  ["🇳🇱","Países Bajos","🇲🇦","Marruecos"],
+  ["🇵🇹","Portugal","🇭🇷","Croacia"],
+  ["🇪🇸","España","🇦🇹","Austria"],
+  ["🇺🇸","EE.UU.","🇧🇦","Bosnia"],
+  ["🇧🇪","Bélgica","🇸🇳","Senegal"],
+  ["🇧🇷","Brasil","🇯🇵","Japón"],
+  ["🇨🇮","Costa de Marfil","🇳🇴","Noruega"],
+  ["🇲🇽","México","🇪🇨","Ecuador"],
+  ["🏴󠁧󠁢󠁥󠁮󠁧󠁿","Inglaterra","🇨🇩","RD Congo"],
+  ["🇦🇷","Argentina","🇨🇻","Cabo Verde"],
+  ["🇦🇺","Australia","🇪🇬","Egipto"],
+  ["🇨🇭","Suiza","🇩🇿","Argelia"],
+  ["🇨🇴","Colombia","🇬🇭","Ghana"],
+];
+/* ============================================================ */
+
+const NUM_PARTIDOS = LLAVES.length;
+const params = new URLSearchParams(location.search);
+const WA_NUMBER = (params.get('wa') || "").replace(/\D/g,"");
+
+const grid = document.getElementById('grid');
+const inputs = [];
+LLAVES.forEach((m,i)=>{
+  const [f1,n1,f2,n2] = m;
+  const row = document.createElement('div');
+  row.className = 'match';
+  row.innerHTML = `
+    <span class="llave">N° ${i+1}</span>
+    <div class="mrow">
+      <div class="team"><span class="flag">${f1}</span><span class="tname">${n1}</span></div>
+      <input class="gl" inputmode="numeric" maxlength="2">
+      <span class="dash">−</span>
+      <input class="gv" inputmode="numeric" maxlength="2">
+      <div class="team right"><span class="tname">${n2}</span><span class="flag">${f2}</span></div>
+    </div>`;
+  grid.appendChild(row);
+  inputs.push({gl:row.querySelector('.gl'), gv:row.querySelector('.gv')});
+});
+
+const allInputs = [...document.querySelectorAll('.gl, .gv')];
+allInputs.forEach((el,i)=>{
+  el.addEventListener('input',()=>{
+    el.value = el.value.replace(/\D/g,'').slice(0,2);
+    el.classList.toggle('filled', el.value!=='');
+    if(el.value.length===1 && i<allInputs.length-1) allInputs[i+1].focus();
+    update();
+  });
+  el.addEventListener('focus',()=>el.select());
+});
+document.getElementById('pname').addEventListener('input',update);
+
+function filledCount(){ let c=0; inputs.forEach(p=>{ if(p.gl.value!=='' && p.gv.value!=='') c++; }); return c; }
+function update(){
+  const n = filledCount();
+  document.getElementById('cnt').textContent = n+'/'+NUM_PARTIDOS+' partidos';
+  document.getElementById('barfill').style.width = (n/NUM_PARTIDOS*100)+'%';
+  const name = document.getElementById('pname').value.trim();
+  const ready = (n===NUM_PARTIDOS && name.length>1);
+  document.getElementById('send').disabled = !ready;
+  const hint = document.getElementById('hint');
+  if(ready) hint.textContent = '¡Todo listo! Toca para enviar tu cartilla.';
+  else if(!name) hint.textContent = 'Escribe tu nombre para continuar.';
+  else hint.textContent = `Faltan ${NUM_PARTIDOS-n} marcador(es) por completar.`;
+}
+
+function buildCode(){
+  const name = document.getElementById('pname').value.trim().replace(/[|;\n]/g,' ');
+  const vals = [];
+  inputs.forEach(p=>{ vals.push(+p.gl.value||0, +p.gv.value||0); });
+  return {name, code:`16A|${name}|${vals.join(',')}`};
+}
+function buildMessage(){
+  const {name, code} = buildCode();
+  let lines = [`🏆 Cartilla Mundial 2026 — 16avos de Final`, `Participante: ${name}`, `———`];
+  LLAVES.forEach((m,i)=>{
+    const p=inputs[i];
+    lines.push(`${i+1}. ${m[0]} ${m[1]} ${p.gl.value}-${p.gv.value} ${m[3]} ${m[2]}`);
+  });
+  lines.push(`———`, code);
+  return lines.join('\n');
+}
+function openWA(){
+  const msg = encodeURIComponent(buildMessage());
+  const url = WA_NUMBER ? `https://wa.me/${WA_NUMBER}?text=${msg}` : `https://wa.me/?text=${msg}`;
+  window.open(url,'_blank');
+}
+document.getElementById('send').addEventListener('click',()=>{
+  document.getElementById('codeout').textContent = buildCode().code;
+  openWA();
+  document.getElementById('actions').style.display='none';
+  document.getElementById('done').classList.add('show');
+  document.getElementById('done').scrollIntoView({behavior:'smooth',block:'center'});
+});
+document.getElementById('reopenwa').addEventListener('click',openWA);
+document.getElementById('copycode').addEventListener('click',()=>{
+  navigator.clipboard.writeText(buildCode().code).then(()=>toast('Código copiado ✔'));
+});
+
+document.getElementById('toCoord').addEventListener('click',()=>{
+  const c=document.getElementById('coord'); c.classList.toggle('show');
+  if(c.classList.contains('show')) c.scrollIntoView({behavior:'smooth'});
+});
+const NV = NUM_PARTIDOS*2;
+const HEADERS = ['Participante'];
+for(let i=1;i<=NUM_PARTIDOS;i++) HEADERS.push(`P${i} GL`,`P${i} GV`);
+let parsed = [];
+function parseInput(){
+  const raw = document.getElementById('cin').value;
+  const found = raw.match(/16A\|[^\n]+/g) || [];
+  const map = new Map();
+  found.forEach(line=>{
+    const parts = line.trim().split('|');
+    if(parts.length<3) return;
+    const name = parts[1].trim();
+    const vals = parts[2].split(',').map(x=>parseInt(x.trim(),10));
+    if(name && vals.length===NV && vals.every(v=>!isNaN(v))) map.set(name.toLowerCase(), [name,...vals]);
+  });
+  parsed = [...map.values()];
+  return parsed;
+}
+document.getElementById('cproc').addEventListener('click',()=>{
+  parseInput();
+  const st=document.getElementById('cstatus');
+  if(!parsed.length){ st.style.color='var(--red)'; st.textContent='⚠️ No se detectaron cartillas válidas (formato 16A|Nombre|'+NV+' números).'; document.getElementById('ctable').innerHTML=''; return; }
+  st.style.color='var(--teal-dk)'; st.textContent=`✔ ${parsed.length} cartilla(s) lista(s) para el Excel.`;
+  let h='<table><thead><tr>'+HEADERS.map(x=>`<th>${x}</th>`).join('')+'</tr></thead><tbody>';
+  parsed.forEach(r=>{ h+='<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>'; });
+  document.getElementById('ctable').innerHTML=h+'</tbody></table>';
+});
+document.getElementById('ccopy').addEventListener('click',()=>{
+  if(!parsed.length) parseInput();
+  if(!parsed.length){ toast('Procesa las cartillas primero'); return; }
+  const tsv = [HEADERS.join('\t'), ...parsed.map(r=>r.join('\t'))].join('\n');
+  navigator.clipboard.writeText(tsv).then(()=>toast(`Tabla copiada (${parsed.length} filas) ✔`));
+});
+document.getElementById('ccsv').addEventListener('click',()=>{
+  if(!parsed.length) parseInput();
+  if(!parsed.length){ toast('Procesa las cartillas primero'); return; }
+  const csv = '\ufeff'+[HEADERS.join(','), ...parsed.map(r=>r.join(','))].join('\n');
+  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Pronosticos_16avos.csv'; a.click();
+});
+
+let tt;
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2200); }
+update();
+</script>
+</body>
+</html>
